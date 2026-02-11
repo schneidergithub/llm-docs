@@ -1,0 +1,13 @@
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+# Create a team named "maintainers" (and optional domain teams) in your GitHub org/user account.
+
+*                         @maintainers
+
+/schema/                   @maintainers
+/tools/                    @maintainers
+/.github/                  @maintainers
+/benchmarks/               @maintainers
+
+/docs/business/            @business-maintainers
+/docs/software-development/ @engineering-maintainers
+/docs/shared/              @maintainers

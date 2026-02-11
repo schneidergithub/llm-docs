@@ -1,0 +1,3 @@
+{"id":"q.v1.001","corpus_version":"corpus-v2026.02.0","doc_refs":["swd.api.versioning.001"],"question":"Explain a safe API versioning strategy and its tradeoffs."}
+{"id":"q.v1.002","corpus_version":"corpus-v2026.02.0","doc_refs":["biz.product.pricing.001"],"question":"Describe pricing model options for a developer-focused SaaS and their risks."}
+{"id":"q.v1.003","corpus_version":"corpus-v2026.02.0","doc_refs":["shr.glossary.core.001"],"question":"Define 'taxonomy' and explain why it matters for a reference corpus used by LLMs."}

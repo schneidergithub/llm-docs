@@ -1,0 +1,36 @@
+{
+  "axes": [
+    {
+      "name": "faithfulness",
+      "scale": [
+        0,
+        5
+      ],
+      "description": "Claims are supported by cited corpus chunks; no fabrication."
+    },
+    {
+      "name": "completeness",
+      "scale": [
+        0,
+        5
+      ],
+      "description": "Addresses the question and covers key points expected by the persona."
+    },
+    {
+      "name": "structure",
+      "scale": [
+        0,
+        5
+      ],
+      "description": "Matches the required output structure for the persona."
+    },
+    {
+      "name": "citations",
+      "scale": [
+        0,
+        5
+      ],
+      "description": "Citations present for key claims and correctly formatted."
+    }
+  ]
+}

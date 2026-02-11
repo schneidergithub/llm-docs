@@ -1,0 +1,38 @@
+{
+  "domains": [
+    "business",
+    "software-development",
+    "shared"
+  ],
+  "status": [
+    "draft",
+    "stable",
+    "deprecated"
+  ],
+  "audience": [
+    "general",
+    "practitioner",
+    "executive",
+    "investor"
+  ],
+  "tag_policy": {
+    "mode": "curated",
+    "allowed_tags": [
+      "api",
+      "architecture",
+      "compliance",
+      "cost",
+      "data",
+      "governance",
+      "metrics",
+      "resilience",
+      "risk",
+      "security",
+      "testing",
+      "ux",
+      "product",
+      "finance",
+      "strategy"
+    ]
+  }
+}
