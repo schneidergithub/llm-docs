@@ -13,20 +13,46 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Detect corpus-related changes
+        id: changes
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            corpus:
+              - 'docs/**'
+              - 'schema/**'
+              - 'tools/**'
+              - 'tests/**'
+              - '.github/workflows/validate.yml'
+
+      - name: Skip corpus validation when irrelevant
+        if: steps.changes.outputs.corpus != 'true'
+        run: |
+          echo "No docs/schema/tools/tests changes detected; skipping validation and smoke build."
+
       - name: Set up Python
+        if: steps.changes.outputs.corpus == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
+        if: steps.changes.outputs.corpus == 'true'
         run: |
           python -m pip install --upgrade pip
           pip install -r tools/requirements.txt
 
       - name: Validate docs
+        if: steps.changes.outputs.corpus == 'true'
         run: |
           python tools/validate_docs.py
 
       - name: Build corpus (smoke)
+        if: steps.changes.outputs.corpus == 'true'
         run: |
-          python tools/build_corpus.py --corpus-version ci-smoke
+          python tools/build_corpus.py --corpus-version ci-smoke --out-dir dist/.ci-smoke
+
+      - name: Run tooling tests
+        if: steps.changes.outputs.corpus == 'true'
+        run: |
+          python -m unittest discover -s tests -p "test_*.py"

@@ -5,7 +5,8 @@
 
 ## Checklist
 
-- [ ] `python tools/validate_docs.py` passes locally
+- [ ] `make validate` passes locally
+- [ ] `make test` passes locally
 - [ ] No raw HTML introduced
 - [ ] New docs include required front matter and curated tags
 - [ ] IDs are new and unique

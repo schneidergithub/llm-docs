@@ -1,0 +1,29 @@
+name: Benchmark request
+description: Request a new benchmark question set, persona, or rubric change.
+title: "[Benchmark]: "
+labels:
+  - benchmark
+body:
+  - type: textarea
+    id: request
+    attributes:
+      label: Request summary
+      description: What benchmark addition or change do you want?
+    validations:
+      required: true
+  - type: textarea
+    id: corpus_scope
+    attributes:
+      label: Corpus scope
+      description: Which docs/domains should this benchmark cover?
+      placeholder: "software-development/api + shared/glossary"
+    validations:
+      required: true
+  - type: textarea
+    id: eval_needs
+    attributes:
+      label: Evaluation details
+      description: Expected rubric axes, personas, and citation requirements.
+      placeholder: "Faithfulness + completeness, software engineer persona, strict citation format."
+    validations:
+      required: true

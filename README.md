@@ -2,7 +2,7 @@
 
 A public, contributor-friendly knowledge base designed to be:
 - **Human-maintained** (Markdown sources under `docs/`)
-- **Machine-ingestible** (deterministic corpus export under `dist/` produced by CI)
+- **Machine-ingestible** (deterministic corpus export artifacts under `dist/`)
 - **Benchmarkable** (versioned personas + question sets under `benchmarks/`)
 
 This repository is optimized for **high accuracy** and **reproducible evaluation** across different LLMs and personas.
@@ -25,34 +25,46 @@ This repository is optimized for **high accuracy** and **reproducible evaluation
 ## Repository structure
 
 - `docs/` — source Markdown
-  - `business/`, `software-development/`, `shared/`
+  - `business/`, `software-development/`, `shared/` (domain sources)
   - `_drafts/` (excluded from exports)
   - `_deprecated/` (excluded from exports)
   - `_templates/` (excluded from exports)
 - `schema/` — taxonomy + JSON schema for front matter
 - `tools/` — validators and corpus builder
-- `dist/` — generated corpus artifacts (built in CI; not required to commit)
+- `dist/` — tracked release artifacts
+  - `dist/releases/<corpus-version>/` (immutable release snapshot)
+  - `dist/latest/` (mirror of newest release)
 - `benchmarks/` — personas, question sets, rubric, and harness scaffold
+- `tests/` — unit tests for validation/build tooling
 
 ## Local development
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r tools/requirements.txt
+make setup
 
-python tools/validate_docs.py
-python tools/build_corpus.py --corpus-version dev-local
+make validate
+make test
+make build VERSION=dev-local
 ```
 
-## Creating a corpus release (reproducible snapshot)
+Local development builds are written to `dist/dev-local/<version>/` (gitignored).
 
-1. Merge changes to `main`
-2. Create a tag: `corpus-vYYYY.MM.patch`
-3. Push the tag — CI will:
-   - validate documents
-   - build `dist/corpus.jsonl`, `dist/index.json`, `dist/manifest.json`
-   - attach artifacts to the GitHub release
+Python 3.11 is the baseline runtime used by CI.
+
+## Release process (reproducible snapshot)
+
+Release automation runs from GitHub Actions workflow **`release-corpus`** via manual dispatch.
+
+1. Trigger workflow: `.github/workflows/release.yml`
+2. Provide `version` in format `corpus-vYYYY.MM.patch`
+3. Workflow will:
+   - validate docs
+   - build corpus for that version
+   - write snapshot to `dist/releases/<version>/`
+   - refresh `dist/latest/`
+   - commit artifacts to `main`
+   - create annotated tag `<version>`
+   - create GitHub Release with attached artifacts
 
 ## Dual licensing
 

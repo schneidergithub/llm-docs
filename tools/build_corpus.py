@@ -15,10 +15,13 @@ Policies (strict):
   - a "root" pseudo-H2 covers content before the first H2 (if any)
 - Block HTML is enforced upstream by validator (not stripped here)
 
-Outputs (dist/):
+Outputs (in --out-dir):
 - corpus.jsonl (one JSON object per chunk)
 - index.json (doc-level index)
 - manifest.json (build metadata)
+
+Notes:
+- Set BUILD_TIMESTAMP_UTC to make manifest timestamps deterministic across repeated builds.
 """
 from __future__ import annotations
 
@@ -192,7 +195,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".", help="Repository root")
     parser.add_argument("--corpus-version", default=None, help="Corpus version (e.g., corpus-v2026.02.0)")
-    parser.add_argument("--out-dir", default="dist", help="Output directory")
+    parser.add_argument("--out-dir", default="dist/dev-local", help="Output directory")
     args = parser.parse_args()
 
     repo_root = Path(args.repo_root).resolve()
@@ -274,10 +277,14 @@ def main() -> int:
     index_path = out_dir / "index.json"
     index_path.write_text(json.dumps(doc_index, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
+    build_timestamp_utc = os.environ.get("BUILD_TIMESTAMP_UTC")
+    if not build_timestamp_utc:
+        build_timestamp_utc = datetime.now(timezone.utc).isoformat(timespec="seconds")
+
     manifest = {
         "corpus_version": corpus_version,
         "git_sha": git_sha,
-        "build_timestamp_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "build_timestamp_utc": build_timestamp_utc,
         "included_statuses": ["stable"],
         "excluded_dirs": sorted(EXCLUDED_DIRS),
         "record_count": len(records),

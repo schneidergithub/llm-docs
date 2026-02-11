@@ -2,7 +2,10 @@
 .venv/
 __pycache__/
 *.pyc
-dist/
+dist/.release_tmp/
+dist/.release_smoke/
+dist/.ci-smoke/
+dist/dev-local/
 
 # OS
 .DS_Store

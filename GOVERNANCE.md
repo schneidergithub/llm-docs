@@ -21,7 +21,8 @@ This repository is maintained by a small set of maintainers who ensure:
 
 ## Release policy
 
-Corpus releases are created via tag: `corpus-vYYYY.MM.patch`.
+Corpus releases use workflow dispatch in `.github/workflows/release.yml` with version input `corpus-vYYYY.MM.patch`.
+The workflow commits generated artifacts under `dist/releases/<version>/`, updates `dist/latest/`, creates the annotated tag, and publishes the release.
 
 Benchmarks should record:
 - corpus version
