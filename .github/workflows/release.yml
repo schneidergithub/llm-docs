@@ -31,6 +31,7 @@ jobs:
             exit 1
           fi
 
+
       - name: Validate version format
         id: validate_version
         run: |
@@ -49,6 +50,7 @@ jobs:
             echo "::error::Tag ${VERSION} already exists."
             exit 1
           fi
+
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -80,6 +82,7 @@ jobs:
             exit 1
           fi
 
+
       - name: Stage release artifacts
         env:
           VERSION: ${{ steps.validate_version.outputs.version }}
@@ -88,21 +91,17 @@ jobs:
             echo "::error::dist/releases/${VERSION} already exists. Refusing to overwrite."
             exit 1
           fi
-
           mkdir -p "dist/releases/${VERSION}" "dist/latest"
           cp "dist/.release_tmp/corpus.jsonl" "dist/releases/${VERSION}/corpus.jsonl"
           cp "dist/.release_tmp/index.json" "dist/releases/${VERSION}/index.json"
           cp "dist/.release_tmp/manifest.json" "dist/releases/${VERSION}/manifest.json"
-
           cp "dist/.release_tmp/corpus.jsonl" "dist/latest/corpus.jsonl"
           cp "dist/.release_tmp/index.json" "dist/latest/index.json"
           cp "dist/.release_tmp/manifest.json" "dist/latest/manifest.json"
-
           (
             cd "dist/releases/${VERSION}"
             shasum -a 256 corpus.jsonl index.json manifest.json > SHA256SUMS
           )
-
           rm -rf dist/.release_tmp
 
       - name: Commit release artifacts to main
@@ -119,12 +118,14 @@ jobs:
           git commit -m "release: ${VERSION}"
           git push origin HEAD:main
 
+
       - name: Create and push annotated tag
         env:
           VERSION: ${{ steps.validate_version.outputs.version }}
         run: |
           git tag -a "${VERSION}" -m "Corpus release ${VERSION}"
           git push origin "${VERSION}"
+
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
