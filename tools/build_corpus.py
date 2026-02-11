@@ -265,7 +265,7 @@ def main() -> int:
             "chunk_count": chunk_count,
         })
 
-    # deterministic ordering
+    # deterministic ordering for index; corpus records preserve natural doc/section order
     doc_index.sort(key=lambda d: d["doc_id"])
 
     corpus_path = out_dir / "corpus.jsonl"
