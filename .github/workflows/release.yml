@@ -1,4 +1,4 @@
-name: release-corpus
+name: release
 
 on:
   workflow_dispatch:
@@ -142,3 +142,4 @@ PY
             dist/releases/${{ steps.validate_version.outputs.version }}/index.json
             dist/releases/${{ steps.validate_version.outputs.version }}/manifest.json
             dist/releases/${{ steps.validate_version.outputs.version }}/SHA256SUMS
+
