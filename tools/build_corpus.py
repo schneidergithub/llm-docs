@@ -266,7 +266,6 @@ def main() -> int:
         })
 
     # deterministic ordering
-    records.sort(key=lambda r: (r["doc_id"], r["chunk_id"]))
     doc_index.sort(key=lambda d: d["doc_id"])
 
     corpus_path = out_dir / "corpus.jsonl"
@@ -290,8 +289,8 @@ def main() -> int:
         "record_count": len(records),
         "doc_count": len(doc_index),
         "output": {
-            "corpus_jsonl": str(corpus_path.relative_to(repo_root)),
-            "index_json": str(index_path.relative_to(repo_root)),
+            "corpus_jsonl": str(corpus_path.relative_to(out_dir)),
+            "index_json": str(index_path.relative_to(out_dir)),
         },
     }
     manifest_path = out_dir / "manifest.json"
