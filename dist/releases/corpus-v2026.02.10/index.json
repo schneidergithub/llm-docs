@@ -1,0 +1,49 @@
+[
+  {
+    "doc_id": "biz.product.pricing.001",
+    "title": "SaaS pricing model options",
+    "domain": "business",
+    "status": "stable",
+    "audience": "investor",
+    "tags": [
+      "product",
+      "finance",
+      "risk"
+    ],
+    "source_path": "docs/business/product/pricing.md",
+    "body_sha256": "89f9a5a28e412c8a2a64ab02a0629f01d807cd3e35df54530680edae121a46db",
+    "char_count": 621,
+    "chunk_count": 7
+  },
+  {
+    "doc_id": "shr.glossary.core.001",
+    "title": "Core glossary for the corpus",
+    "domain": "shared",
+    "status": "stable",
+    "audience": "general",
+    "tags": [
+      "governance",
+      "data"
+    ],
+    "source_path": "docs/shared/glossary/core.md",
+    "body_sha256": "433e49ed53e8890b9d1ca0652a42691759e87333ee129554027c73476aaeaf71",
+    "char_count": 496,
+    "chunk_count": 7
+  },
+  {
+    "doc_id": "swd.api.versioning.001",
+    "title": "API versioning strategy",
+    "domain": "software-development",
+    "status": "stable",
+    "audience": "practitioner",
+    "tags": [
+      "api",
+      "architecture",
+      "risk"
+    ],
+    "source_path": "docs/software-development/api/versioning.md",
+    "body_sha256": "26e13aef43e5fe807e3f2166546740860dc69bce1da1788c0bc6dc5ceac816e6",
+    "char_count": 686,
+    "chunk_count": 7
+  }
+]

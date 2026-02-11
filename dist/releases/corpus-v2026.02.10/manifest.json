@@ -1,0 +1,19 @@
+{
+  "corpus_version": "corpus-v2026.02.10",
+  "git_sha": "8275085aae9940b226f476e87387cfe9f5eca1c2",
+  "build_timestamp_utc": "2026-02-11T02:12:07+00:00",
+  "included_statuses": [
+    "stable"
+  ],
+  "excluded_dirs": [
+    "_deprecated",
+    "_drafts",
+    "_templates"
+  ],
+  "record_count": 21,
+  "doc_count": 3,
+  "output": {
+    "corpus_jsonl": "corpus.jsonl",
+    "index_json": "index.json"
+  }
+}
