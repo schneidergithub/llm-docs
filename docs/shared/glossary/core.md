@@ -5,7 +5,7 @@ domain: shared
 status: stable
 audience: general
 tags: [governance, data]
-last_reviewed: 2026-02-10
+last_reviewed: "2026-02-10"
 summary: Core terms used across the corpus.
 ---
 

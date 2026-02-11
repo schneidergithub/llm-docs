@@ -5,7 +5,7 @@ domain: software-development
 status: draft
 audience: practitioner
 tags: [architecture]
-last_reviewed: 2026-02-10
+last_reviewed: "2026-02-10"
 summary: Use this template to create new documents.
 ---
 
