@@ -5,7 +5,7 @@ domain: software-development
 status: stable
 audience: practitioner
 tags: [api, architecture, risk]
-last_reviewed: 2026-02-10
+last_reviewed: "2026-02-10"
 summary: Practical versioning options and defaults for long-lived APIs.
 ---
 

@@ -5,7 +5,7 @@ domain: business
 status: stable
 audience: investor
 tags: [product, finance, risk]
-last_reviewed: 2026-02-10
+last_reviewed: "2026-02-10"
 summary: Common SaaS pricing models with risks and decision criteria.
 ---
 
